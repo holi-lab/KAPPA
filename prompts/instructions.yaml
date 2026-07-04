@@ -1,0 +1,29 @@
+instructions: 
+  instruction_1: >
+    Provide your answer with {option_text}, following the output format below.
+    **Output Format**:
+    {format_text}
+
+  instruction_2: >
+    Given the following question and candidate answers, choose the correct option.
+    **Output Format**:
+    {format_text}
+
+  instruction_3: >
+    Choose the correct option between {option_text}. Use the format shown below when you answer.
+    **Output Format**:
+    {format_text}
+
+  instruction_4: >
+    Choose the best answer. Follow the output format below.
+    **Output Format**:
+    {format_text}
+
+answer_format:
+  answer_format_1: 
+    prefix: "The correct answer is "
+    suffix: "."
+
+  answer_format_2: 
+    prefix: "Answer: "
+    suffix: ""

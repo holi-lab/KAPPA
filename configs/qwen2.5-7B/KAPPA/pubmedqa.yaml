@@ -1,0 +1,187 @@
+activation_config:
+  components:
+  - res
+  layers:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  token_positions:
+  - -2
+activation_exp_config:
+  experiment_type: activations
+  output_dir: null
+  llm_config:
+    model_name: Qwen2.5
+    use_base_model: false
+    model_size: 7B
+  generation_config:
+    decoding_mode: logit_generate
+    polarity:
+    - pos
+  activation_config:
+    layers:
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    token_positions:
+    - -2
+    components:
+    - res
+  dataset_configs:
+  - datasets:
+    - pubmedqa
+    num_option: 3
+    num_permutations: 6
+    prompt_configs:
+    - mcq_inst_versions:
+      - instruction_2
+      answer_format_versions:
+      - answer_format_2
+      option_symbols:
+      - common_alphabet_upper
+      option_wrappers:
+      - round_brackets
+    random_seed: 42
+    splits:
+    - test
+    type: mcqa
+dataset_configs:
+- datasets:
+  - pubmedqa
+  num_option: 3
+  num_permutations: 6
+  prompt_configs:
+  - mcq_inst_versions:
+    - instruction_2
+    answer_format_versions:
+    - answer_format_2
+    option_symbols:
+    - common_alphabet_upper
+    option_wrappers:
+    - round_brackets
+  random_seed: 42
+  splits:
+  - test
+  type: mcqa
+experiment_type: steering
+generation_config:
+  decoding_mode: logit_generate
+llm_config:
+  model_name: Qwen2.5
+  use_base_model: false
+  model_size: 7B
+output_dir: null
+probe_exp_config:
+  activation_exp_config:
+    activation_config:
+      components:
+      - res
+      layers:
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      token_positions:
+      - -2
+    dataset_configs:
+    - datasets:
+      - pubmedqa
+      num_option: 3
+      num_permutations: 6
+      prompt_configs:
+      - mcq_inst_versions:
+        - instruction_2
+        answer_format_versions:
+        - answer_format_2
+        option_symbols:
+        - common_alphabet_upper
+        option_wrappers:
+        - round_brackets
+      random_seed: 42
+      splits:
+      - test
+      type: mcqa
+    experiment_type: activations
+    generation_config:
+      decoding_mode: logit_generate
+      polarity:
+      - pos
+    llm_config:
+      model_name: Qwen2.5
+      use_base_model: false
+      model_size: 7B
+    output_dir: null
+  experiment_type: probe
+  output_dir: null
+  probe_config:
+    components:
+    - res
+    layers:
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    method: sc
+    model_name: SoftmaxClassifier
+    objectives:
+    - answer
+    - pred
+    save_name: pubmedqa
+    token_positions:
+    - - -2
+    training_config:
+      batch_size: 128
+      epochs: 1000
+      learning_rate: 0.0002
+      loss_function: CrossEntropyLoss
+      metric: multi_classification_metric
+steering_config:
+  components:
+  - res
+  intervention_layers:
+  - layers:
+    - 22
+  - layers:
+    - 22
+    - 23
+    - 24
+  - layers:
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+  method: KAPPA
+  model_name: KAPPA
+  module_config: null
+  multipliers:
+  - 1.0
+  w: 30.0
+  beta: 0.0
+  save_activation: false
+  save_name: pubmedqa
+  target_projection: null
+  vector_config_list:
+  - component: res
+    method: sc
+    model_name: SoftmaxClassifier
+    objective: answer
+    token_position:
+    - -2
+  - component: res
+    method: sc
+    model_name: SoftmaxClassifier
+    objective: pred
+    token_position:
+    - -2

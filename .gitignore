@@ -1,0 +1,12 @@
+# Generated analysis outputs (regenerable by geometry/ scripts)
+geometry/results/
+
+# Experiment outputs (produced by run_*.py)
+kappa_core/outputs/
+
+# Matplotlib headless config
+**/.mplconfig/
+
+# Python
+**/__pycache__/
+*.pyc

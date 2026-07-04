@@ -1,0 +1,10 @@
+option_symbol:
+  common_alphabet_upper: [A, B, C, D, E, F]
+  roman_numerals: [i, ii, iii, iv, v, vi]
+  common_numbers: ["1", "2", "3", "4", "5", "6"]
+  random_alphabet_upper: ["Q", "K", "E", "U"]
+
+option_wrapper:
+  round_brackets:
+    prefix: "("
+    suffix: ")"

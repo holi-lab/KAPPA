@@ -1,0 +1,112 @@
+activation_exp_config:
+  experiment_type: activations
+  output_dir: null
+  llm_config:
+    model_name: Qwen2.5
+    use_base_model: false
+    model_size: 7B
+  generation_config:
+    decoding_mode: logit_generate
+    polarity:
+    - pos
+  activation_config:
+    layers:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    token_positions:
+    - -2
+    components:
+    - res
+  dataset_configs:
+  - datasets:
+    - pubmedqa
+    num_option: 3
+    num_permutations: 6
+    prompt_configs:
+    - mcq_inst_versions:
+      - instruction_2
+      answer_format_versions:
+      - answer_format_2
+      option_symbols:
+      - common_alphabet_upper
+      option_wrappers:
+      - round_brackets
+    random_seed: 42
+    splits:
+    - train
+    - validation
+    - test
+    type: mcqa
+experiment_type: probe
+output_dir: null
+probe_config:
+  components:
+  - res
+  layers:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  method: sc
+  model_name: SoftmaxClassifier
+  objectives:
+  - answer
+  save_name: pubmedqa
+  token_positions:
+  - - -2
+  training_config:
+    batch_size: 128
+    epochs: 1000
+    learning_rate: 0.0002
+    loss_function: CrossEntropyLoss
+    metric: multi_classification_metric

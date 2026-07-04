@@ -1,0 +1,64 @@
+experiment_type: activations
+output_dir: null
+llm_config:
+  model_name: Qwen2.5
+  use_base_model: false
+  model_size: 7B
+generation_config:
+  decoding_mode: logit_generate
+  polarity:
+  - pos
+activation_config:
+  layers:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  token_positions:
+  - -2
+  components:
+  - res
+dataset_configs:
+- datasets:
+  - mmlu_social_sciences
+  num_option: 4
+  num_permutations: 8
+  prompt_configs:
+  - mcq_inst_versions:
+    - instruction_1
+    answer_format_versions:
+    - answer_format_1
+    option_symbols:
+    - common_numbers
+    option_wrappers:
+    - round_brackets
+  random_seed: 42
+  splits:
+  - train
+  - validation
+  - test
+  type: mcqa
